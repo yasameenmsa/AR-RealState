@@ -22,9 +22,15 @@ mongoose.connect(process.env.MONGO_URL)
 
 // middlewares
 //cors
-app.use(cors({
-    origin : "http://localhost:3000"
-}));
+
+const corsOptions = {
+  origin: "*", 
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 // app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
